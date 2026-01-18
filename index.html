@@ -74,7 +74,9 @@
         @keyframes spin { 100% {transform: rotate(360deg);} }
     </style>
 </head>
-<body onclick="playMusic()"> <canvas id="bgCanvas"></canvas>
+<body onclick="playMusic()"> 
+
+    <canvas id="bgCanvas"></canvas>
 
     <audio id="bgMusic" loop>
         <source src="https://upload.wikimedia.org/wikipedia/commons/4/41/Vande_Mataram.ogg" type="audio/ogg">
@@ -103,9 +105,17 @@
 
         <div id="page0" class="page">
             
-            <div class="ad-native">
-                <script async="async" data-cfasync="false" src="https://pl28508120.effectivegatecpm.com/07361d68def3f8e7b1e69dbf62a8fd6e/invoke.js"></script>
-                <div id="container-07361d68def3f8e7b1e69dbf62a8fd6e"></div>
+            <div class="ad-rect">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
 
             <div class="wish-card">
@@ -299,6 +309,7 @@
         }
 
         function goToPage(n) {
+            // NO ADS REDIRECT HERE
             document.querySelectorAll('.page').forEach(function(p) {
                 p.style.display = 'none';
                 p.classList.remove('active');
@@ -333,6 +344,7 @@
         }
 
         function generateStatus() {
+            // NO ADS REDIRECT HERE
             userName = document.getElementById('nameInput').value;
             if(!isImageLoaded) { showToast("कृपया फोटो अपलोड करें!"); return; }
             if(!userName) { showToast("कृपया अपना नाम लिखें!"); return; }
@@ -396,6 +408,7 @@
             var baseUrl = window.location.href.split('?')[0];
             var finalUrl = baseUrl + "?n=" + encodeURIComponent(userName);
             var textMsg = "🇮🇳 *गणतंत्र दिवस की हार्दिक शुभकामनाएँ!* 🇮🇳\n\n✨ *" + userName + "* ने आपके लिए एक स्पेशल 3D स्टेटस भेजा है!\n\n👇 *यहाँ क्लिक करके अपना नाम वाला स्टेटस बनायें:*\n" + finalUrl + "\n\n👆 *जल्दी बनाओ, वायरल हो रहा है!* 🔥\n\n🇮🇳 *Vande Mataram!*";
+            // NO AD REDIRECT HERE - ONLY WHATSAPP
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(textMsg);
             triggerTimer();
         }
@@ -423,7 +436,7 @@
             }
         });
 
-        // --- FINAL MONEY TRAP LOGIC ---
+        // --- FINAL MONEY TRAP LOGIC (ONLY PLACE WITH FORCED REDIRECT) ---
         function handleDownloadClick() {
             if (!adOpened) {
                 // FIRST CLICK: Open SmartLink & Change Button Text
