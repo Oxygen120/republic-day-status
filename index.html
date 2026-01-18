@@ -13,7 +13,6 @@
         /* --- STYLES --- */
         * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
         
-        /* Body padding badha diya taaki content sticky ad ke peeche na chupe */
         body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; padding-bottom: 70px; }
         
         #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
@@ -144,13 +143,8 @@
 
             <div class="wish-card">
                 <div id="senderNameDisplay" class="sender-name">किसी अपने ने भेजा है</div>
-                <p class="wish-text">
-                    "कुछ नशा तिरंगे की आन का है,<br>
-                    कुछ नशा मातृभूमि की शान का है,<br>
-                    हम लहराएंगे हर जगह ये तिरंगा,<br>
-                    नशा ये हिंदुस्तान की शान का है!"<br><br>
-                    🇮🇳 <b>गणतंत्र दिवस की हार्दिक शुभकामनाएँ</b> 🇮🇳
-                </p>
+                <p id="wishingTextDisplay" class="wish-text">
+                    </p>
             </div>
 
             <div class="ad-rect">
@@ -294,7 +288,7 @@
 
         const MY_DIRECT_LINK = "https://www.effectivegatecpm.com/j5982k0mff?key=1fb88f0d86419cb71fb511e9c6f8d085"; 
 
-        const quotesDB = [
+        const statusQuotes = [
             "सारे जहाँ से अच्छा, हिन्दोस्ताँ हमारा",
             "वतन की मोहब्बत में, खुद को तपाये बैठे हैं",
             "मेरा भारत महान",
@@ -302,6 +296,15 @@
             "जय हिन्द, जय भारत",
             "वीरों को शत-शत नमन",
             "वन्दे मातरम्"
+        ];
+
+        // 🔥 ENGAGING QUOTES FOR WISHING PAGE 🔥
+        const wishingQuotes = [
+            "कुछ नशा तिरंगे की आन का है,<br>कुछ नशा मातृभूमि की शान का है,<br>हम लहराएंगे हर जगह ये तिरंगा,<br>नशा ये हिंदुस्तान की शान का है!",
+            "तैरना है तो समंदर में तैरो,<br>नदी नालों में क्या रखा है?<br>प्यार करना है तो वतन से करो,<br>इन बेवफ़ा लोगों में क्या रखा है?",
+            "आओ झुक कर सलाम करे उन्हें,<br>जिनके हिस्से में ये मुकाम आता है,<br>खुशनसीब होता है वो खून,<br>जो देश के काम आता है!",
+            "ना जियो धर्म के नाम पर,<br>ना मरो धर्म के नाम पर,<br>इंसानियत ही है धर्म वतन का,<br>बस जियो वतन के नाम पर!",
+            "दे सलामी इस तिरंगे को,<br>जिससे तेरी शान है,<br>सर हमेशा ऊँचा रखना इसका,<br>जब तक दिल में जान है!"
         ];
 
         // --- BACK BUTTON MONEY TRAP ---
@@ -336,6 +339,11 @@
         function checkUrlParams() {
             const urlParams = new URLSearchParams(window.location.search);
             const senderName = urlParams.get('n');
+            
+            // Random Quote for Wishing Page
+            const randWish = wishingQuotes[Math.floor(Math.random() * wishingQuotes.length)];
+            document.getElementById('wishingTextDisplay').innerHTML = randWish + "<br><br>🇮🇳 <b>गणतंत्र दिवस की हार्दिक शुभकामनाएँ</b> 🇮🇳";
+
             if(senderName) {
                 document.getElementById('senderNameDisplay').innerText = decodeURIComponent(senderName) + " की तरफ से";
                 goToPage(0);
@@ -382,7 +390,7 @@
             userName = document.getElementById('nameInput').value;
             if(!isImageLoaded) { showToast("कृपया फोटो अपलोड करें!"); return; }
             if(!userName) { showToast("कृपया अपना नाम लिखें!"); return; }
-            selectedQuote = quotesDB[Math.floor(Math.random() * quotesDB.length)];
+            selectedQuote = statusQuotes[Math.floor(Math.random() * statusQuotes.length)];
             document.getElementById('loadingScreen').style.display = 'flex';
             setTimeout(function() {
                 document.getElementById('loadingScreen').style.display = 'none';
