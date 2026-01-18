@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>26 जनवरी स्टेटस</title>
+
+    <script src="https://pl28506493.effectivegatecpm.com/71/a5/3e/71a53e94a7494a3e363eda6fd93f344e.js"></script>
+
+    <script src="https://pl28506523.effectivegatecpm.com/0b/49/91/0b49913af96f7209e3f5ea6fdf7edc24.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLES --- */
+        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
+        #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+        .app-wrapper { width: 100%; max-width: 480px; margin: 0 auto; min-height: 100vh; background: rgba(5, 5, 5, 0.98); box-shadow: 0 0 30px rgba(255, 153, 51, 0.15); position: relative; z-index: 1; padding-bottom: 150px; }
+        .header { background: linear-gradient(90deg, #FF9933, #ffffff, #138808); padding: 12px; text-align: center; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .header h2 { margin: 0; font-size: 1.2rem; color: #000080; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* MUSIC CONTROL */
+        .music-btn {
+            position: fixed; top: 60px; right: 10px; z-index: 999;
+            background: rgba(0,0,0,0.5); border: 1px solid #FF9933;
+            border-radius: 50%; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; cursor: pointer; animation: spin 4s linear infinite;
+        }
+
+        /* PAGE SYSTEM */
+        .page { display: none; padding: 15px; flex-direction: column; align-items: center; width: 100%; animation: fadeIn 0.5s ease-out; }
+        .page.active { display: flex !important; }
+        @keyframes fadeIn { from {opacity:0; transform:translateY(15px);} to {opacity:1; transform:translateY(0);} }
+
+        /* WISH CARD */
+        .wish-card {
+            background: linear-gradient(145deg, #1a1a1a, #222); border: 2px solid #FF9933; border-radius: 15px;
+            padding: 20px; text-align: center; width: 100%; margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(255, 153, 51, 0.2); animation: pulseCard 2s infinite;
+        }
+        @keyframes pulseCard { 0%{box-shadow: 0 0 0 0 rgba(255, 153, 51, 0.4);} 70%{box-shadow: 0 0 0 10px rgba(255, 153, 51, 0);} 100%{box-shadow: 0 0 0 0 rgba(255, 153, 51, 0);} }
+        .sender-name { font-size: 1.8rem; font-weight: bold; color: #FF9933; text-transform: uppercase; margin-bottom: 10px; text-shadow: 0 0 10px rgba(255, 153, 51, 0.5); }
+        .wish-text { font-size: 1.1rem; color: #ddd; line-height: 1.6; font-family: 'Playfair Display', serif; }
+
+        /* ADS */
+        .ad-rect { width: 300px; height: 250px; background: #1a1a1a; border: 1px dashed #444; display: flex; align-items: center; justify-content: center; margin: 20px auto; color: #666; font-size: 0.8rem; border-radius: 10px; overflow: hidden; position: relative; z-index: 1; }
+        .ad-native { width: 100%; min-height: 100px; background: #1a1a1a; border: 1px dashed #444; display: flex; align-items: center; justify-content: center; margin: 15px 0; color: #666; font-size: 0.8rem; border-radius: 10px; overflow: hidden; position: relative; z-index: 1; }
+        
+        .btn-action { position: relative; z-index: 100; width: 100%; padding: 16px; border-radius: 50px; border: none; font-size: 1.2rem; font-weight: 700; cursor: pointer; text-transform: uppercase; margin: 15px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.2s; }
+        .btn-action:active { transform: scale(0.97); }
+        .btn-orange { background: linear-gradient(135deg, #FF9933, #FF512F); color: white; animation: pulse 2s infinite; }
+        .btn-blue { background: linear-gradient(135deg, #007bff, #0056b3); color: white; }
+        .btn-green { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
+        
+        .upload-wrapper { width: 100%; padding: 30px; border: 2px dashed #FF9933; border-radius: 20px; background: rgba(255,255,255,0.03); text-align: center; cursor: pointer; margin-bottom: 20px; transition: 0.3s; position: relative; z-index: 50; }
+        input[type="text"] { width: 100%; padding: 18px; border-radius: 15px; border: 1px solid #444; background: #1a1a1a; color: #fff; font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 10px; position: relative; z-index: 50; }
+        
+        /* CANVAS */
+        .canvas-container { position: relative; width: 100%; max-width: 300px; height: 533px !important; margin: 0 auto 20px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); background: #111; }
+        #displayCanvas { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .blur-canvas { filter: blur(12px); transform: scale(1.05); }
+        .canvas-lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 5; backdrop-filter: blur(2px); }
+        .canvas-lock-icon { font-size: 4rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+
+        .toast-overlay, .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2147483647; backdrop-filter: blur(5px); align-items: center; justify-content: center; }
+        .toast-box, .modal-box { background: #111; width: 85%; max-width: 320px; padding: 25px; border-radius: 20px; border: 1px solid #FF512F; text-align: center; position: relative; animation: popIn 0.3s ease; }
+        .modal-box { border: 1px solid #FF9933; }
+        .toast-btn { background: #FF512F; color: white; border: none; padding: 10px 30px; border-radius: 25px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        @keyframes popIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+        
+        .prog-track { width: 100%; height: 12px; background: #222; border-radius: 6px; margin: 20px 0; overflow: hidden; border: 1px solid #444; }
+        .prog-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #FF9933, #138808); transition: width 0.4s; }
+        #loadingScreen { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: #000; z-index: 2147483647; align-items: center; justify-content: center; flex-direction: column; }
+        .spin { width: 50px; height: 50px; border: 4px solid #333; border-top: 4px solid #FF9933; border-radius: 50%; animation: spin 0.8s infinite linear; }
+        @keyframes spin { 100% {transform: rotate(360deg);} }
+    </style>
+</head>
+<body onclick="playMusic()"> <canvas id="bgCanvas"></canvas>
+
+    <audio id="bgMusic" loop>
+        <source src="https://upload.wikimedia.org/wikipedia/commons/4/41/Vande_Mataram.ogg" type="audio/ogg">
+    </audio>
+    <div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+    <div id="loadingScreen"><div class="spin"></div><p style="margin-top:20px;color:#aaa;">कृपया प्रतीक्षा करें...</p></div>
+
+    <div id="customToast" class="toast-overlay">
+        <div class="toast-box"><div class="toast-icon">⚠️</div><h3 style="margin:0;color:#FF512F;">जानकारी अधूरी है!</h3><p id="toastMsg" style="color:#ccc;margin-top:10px;">कृपया पहले फोटो अपलोड करें।</p><button class="toast-btn" onclick="closeToast()">ठीक है</button></div>
+    </div>
+
+    <div id="shareModal" class="modal-bg">
+        <div class="modal-box">
+            <h2 style="margin:0 0 10px 0;color:white;">डाउनलोड अनलॉक करें</h2><p style="color:#888;font-size:0.9rem;">HD लिंक पाने के लिए 3 ग्रुप्स में शेयर करें</p>
+            <div class="prog-track"><div id="progBar" class="prog-fill"></div></div>
+            <p id="progText" style="font-size:0.85rem;color:#FF9933;font-weight:bold;">0% अनलॉक हुआ</p>
+            <button class="btn-action btn-green" onclick="handleShare()">WhatsApp पर शेयर करें 📲</button>
+            <a id="downloadBtn" class="btn-action btn-blue" style="display:none;text-decoration:none;" href="#" onclick="handleDownloadClick()">डाउनलोड HD ⬇️</a>
+            <button onclick="closeModal()" style="background:none;border:none;color:#555;margin-top:15px;cursor:pointer;">बंद करें</button>
+        </div>
+    </div>
+
+    <div class="app-wrapper">
+        <div class="header"><h2>🇮🇳 वन्दे मातरम् 🇮🇳</h2></div>
+
+        <div id="page0" class="page">
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28506525.effectivegatecpm.com/d1d6fa08d550ef4242158ff882948f9e/invoke.js"></script> <div id="container-d1d6fa08d550ef4242158ff882948f9e"></div>
+            </div>
+
+            <div class="wish-card">
+                <div id="senderNameDisplay" class="sender-name">किसी अपने ने भेजा है</div>
+                <p class="wish-text">
+                    "कुछ नशा तिरंगे की आन का है,<br>
+                    कुछ नशा मातृभूमि की शान का है,<br>
+                    हम लहराएंगे हर जगह ये तिरंगा,<br>
+                    नशा ये हिंदुस्तान की शान का है!"<br><br>
+                    🇮🇳 <b>गणतंत्र दिवस की हार्दिक शुभकामनाएँ</b> 🇮🇳
+                </p>
+            </div>
+
+            <div class="ad-rect">
+                <script type="text/javascript"> atOptions = { 'key' : '5ea202eb35406dff97463e215ca4e560', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/5ea202eb35406dff97463e215ca4e560/invoke.js"></script>
+            </div>
+
+            <button class="btn-action btn-orange" onclick="goToPage(2)">अपना भी बनायें 👉</button>
+        </div>
+
+        <div id="page1" class="page">
+            <h1 class="title-main">गणतंत्र दिवस<br>प्रीमियम स्टेटस</h1>
+            
+            <div class="ad-rect">
+                <script type="text/javascript"> atOptions = { 'key' : '5ea202eb35406dff97463e215ca4e560', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/5ea202eb35406dff97463e215ca4e560/invoke.js"></script>
+            </div>
+
+            <button class="btn-action btn-orange" onclick="goToPage(2)">अभी अपना बनाये &rarr;</button>
+
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28506525.effectivegatecpm.com/d1d6fa08d550ef4242158ff882948f9e/invoke.js"></script> <div id="container-d1d6fa08d550ef4242158ff882948f9e"></div>
+            </div>
+            
+            <p style="color:#666; font-size:0.8rem;">तेज़ • बिना वॉटरमार्क • HD</p>
+            
+            <div class="ad-rect">
+                <script type="text/javascript"> atOptions = { 'key' : '5ea202eb35406dff97463e215ca4e560', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/5ea202eb35406dff97463e215ca4e560/invoke.js"></script>
+            </div>
+        </div>
+
+        <div id="page2" class="page">
+            <h2 style="font-size:1.5rem; margin-bottom:20px;">जानकारी भरें</h2>
+            
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28506525.effectivegatecpm.com/d1d6fa08d550ef4242158ff882948f9e/invoke.js"></script> <div id="container-d1d6fa08d550ef4242158ff882948f9e"></div>
+            </div>
+
+            <label class="upload-wrapper">
+                <span style="font-size:3rem;">📸</span><div id="uploadStatus" style="font-weight:600;margin-top:10px;">फोटो अपलोड करें</div>
+                <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFile(event)">
+            </label>
+            <input type="text" id="nameInput" placeholder="अपना नाम लिखें" autocomplete="off">
+            
+            <div class="ad-rect" style="height:250px;">
+                <script type="text/javascript"> atOptions = { 'key' : '5ea202eb35406dff97463e215ca4e560', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/5ea202eb35406dff97463e215ca4e560/invoke.js"></script>
+            </div>
+
+            <button class="btn-action btn-orange" onclick="generateStatus()">स्टेटस बनायें ✨</button>
+            
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28506525.effectivegatecpm.com/d1d6fa08d550ef4242158ff882948f9e/invoke.js"></script> <div id="container-d1d6fa08d550ef4242158ff882948f9e"></div>
+            </div>
+        </div>
+
+        <div id="page3" class="page">
+            <h2 style="font-size:1.5rem;color:#FF9933;margin-bottom:10px;">प्रिव्यू लॉक है</h2>
+            
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28506525.effectivegatecpm.com/d1d6fa08d550ef4242158ff882948f9e/invoke.js"></script> <div id="container-d1d6fa08d550ef4242158ff882948f9e"></div>
+            </div>
+
+            <div class="canvas-container">
+                <div id="canvasLock" class="canvas-lock-overlay"><div class="canvas-lock-icon">🔒</div><div style="background:#FF9933;padding:5px 15px;color:black;font-weight:bold;border-radius:5px;">LOCKED</div></div>
+                <canvas id="displayCanvas" class="blur-canvas" width="540" height="960"></canvas>
+            </div>
+
+            <button class="btn-action btn-blue" onclick="openModal()" id="lockBtn">डाउनलोड अनलॉक करें 🔒</button>
+
+            <div class="ad-rect">
+                <script type="text/javascript"> atOptions = { 'key' : '5ea202eb35406dff97463e215ca4e560', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/5ea202eb35406dff97463e215ca4e560/invoke.js"></script>
+            </div>
+
+            <button onclick="location.reload()" style="background:none;border:none;color:#777;margin-top:10px;cursor:pointer;">नया बनायें</button>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLES
+        var userImg = new Image(); 
+        var userName = ""; 
+        var isAnimating = false;
+        var selectedQuote = ""; 
+        var glitter = [];
+        var shares = 0; 
+        var lastTime = 0;
+        var isImageLoaded = false;
+        var musicPlaying = false;
+        var adOpened = false; // MONEY LOGIC
+
+        const MY_DIRECT_LINK = "https://www.effectivegatecpm.com/qz3mubj0?key=42ab7541e1809e38042b848d0e0d8bc6";
+
+        const quotesDB = [
+            "सारे जहाँ से अच्छा, हिन्दोस्ताँ हमारा",
+            "वतन की मोहब्बत में, खुद को तपाये बैठे हैं",
+            "मेरा भारत महान",
+            "विजयी विश्व तिरंगा प्यारा",
+            "जय हिन्द, जय भारत",
+            "वीरों को शत-शत नमन",
+            "वन्दे मातरम्"
+        ];
+
+        // --- MUSIC LOGIC (Click Anywhere to Play) ---
+        function playMusic() {
+            var audio = document.getElementById("bgMusic");
+            if(!musicPlaying) {
+                audio.play().then(() => {
+                    musicPlaying = true;
+                }).catch(e => console.log("Waiting for user interaction"));
+            }
+        }
+        function toggleMusic() {
+            var audio = document.getElementById("bgMusic");
+            if(musicPlaying) { audio.pause(); musicPlaying = false; }
+            else { audio.play(); musicPlaying = true; }
+        }
+
+        // --- PAGE LOGIC ---
+        function checkUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get('n');
+            if(senderName) {
+                document.getElementById('senderNameDisplay').innerText = decodeURIComponent(senderName) + " की तरफ से";
+                goToPage(0);
+            } else {
+                goToPage(1);
+            }
+        }
+
+        function goToPage(n) {
+            document.querySelectorAll('.page').forEach(function(p) {
+                p.style.display = 'none';
+                p.classList.remove('active');
+            });
+            var target = document.getElementById('page' + n);
+            if(target) {
+                target.style.display = 'flex';
+                setTimeout(function(){ target.classList.add('active'); }, 10);
+            }
+            window.scrollTo(0,0);
+        }
+
+        function showToast(m) { document.getElementById('toastMsg').innerText = m; document.getElementById('customToast').style.display = 'flex'; }
+        function closeToast() { document.getElementById('customToast').style.display = 'none'; }
+
+        function handleFile(e) { 
+            if(e.target.files.length > 0) { 
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    userImg = new Image();
+                    userImg.onload = function() {
+                        isImageLoaded = true;
+                        document.getElementById('uploadStatus').innerText = "फोटो सेलेक्ट हो गयी ✅"; 
+                        document.getElementById('uploadStatus').style.color = "#00e676";
+                        document.querySelector('.upload-wrapper').style.borderColor = "#00e676";
+                    }
+                    userImg.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            } 
+        }
+
+        function generateStatus() {
+            userName = document.getElementById('nameInput').value;
+            if(!isImageLoaded) { showToast("कृपया फोटो अपलोड करें!"); return; }
+            if(!userName) { showToast("कृपया अपना नाम लिखें!"); return; }
+            selectedQuote = quotesDB[Math.floor(Math.random() * quotesDB.length)];
+            document.getElementById('loadingScreen').style.display = 'flex';
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.display = 'none';
+                goToPage(3); 
+                isAnimating = true; 
+                requestAnimationFrame(animateStatus);
+            }, 1500);
+        }
+
+        // --- ANIMATION ---
+        function animateStatus() {
+            if(!isAnimating) return;
+            var cvs = document.getElementById('displayCanvas');
+            if(!cvs) return;
+            var ctx = cvs.getContext('2d');
+            
+            if (!userImg.src || userImg.width === 0) return;
+
+            ctx.fillStyle = "#000"; ctx.fillRect(0,0,540,960);
+            var s = Math.max(540/userImg.width, 960/userImg.height);
+            var x = (540 - userImg.width*s)/2; var y = (960 - userImg.height*s)/2;
+            ctx.drawImage(userImg, x, y, userImg.width*s, userImg.height*s);
+
+            var g = ctx.createLinearGradient(0,300,0,960);
+            g.addColorStop(0, "transparent"); g.addColorStop(0.6, "rgba(0,0,0,0.6)"); g.addColorStop(1, "rgba(0,0,0,0.95)");
+            ctx.fillStyle = g; ctx.fillRect(0,0,540,960);
+
+            ctx.fillStyle = "#FF9933"; ctx.fillRect(20, 20, 500, 5);
+            ctx.fillStyle = "#138808"; ctx.fillRect(20, 935, 500, 5);
+            ctx.textAlign = "center";
+            ctx.font = "600 24px 'Poppins', sans-serif";
+            ctx.fillStyle = "#FFD700"; ctx.letterSpacing = "5px"; ctx.fillText("26 JANUARY", 270, 600);
+            
+            ctx.shadowColor = "rgba(255, 153, 51, 0.8)"; ctx.shadowBlur = 30;
+            ctx.font = "900 65px 'Poppins', sans-serif";
+            ctx.fillStyle = "#FFF"; ctx.letterSpacing = "0px";
+            ctx.fillText("REPUBLIC", 270, 670); ctx.fillText("DAY", 270, 740); ctx.shadowBlur = 0;
+            
+            ctx.font = "bold 50px 'Poppins', sans-serif"; ctx.fillStyle = "#FF9933"; ctx.fillText(userName.toUpperCase(), 270, 820);
+            ctx.font = "italic 20px 'Poppins', sans-serif"; ctx.fillStyle = "#ccc"; ctx.fillText('"' + selectedQuote + '"', 270, 870);
+
+            if(Math.random()<0.4) glitter.push({x:Math.random()*540, y:0, vy:Math.random()*4+1, alpha:1});
+            glitter.forEach(function(p,i){
+                p.y += p.vy; p.alpha -= 0.005;
+                ctx.fillStyle = "rgba(255, 215, 0, " + p.alpha + ")";
+                ctx.beginPath(); ctx.arc(p.x,p.y,Math.random()*2+1,0,Math.PI*2); ctx.fill();
+                if(p.y > 960 || p.alpha <=0) glitter.splice(i,1);
+            });
+            requestAnimationFrame(animateStatus);
+        }
+
+        function openModal() { document.getElementById('shareModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('shareModal').style.display = 'none'; }
+
+        function handleShare() {
+            var baseUrl = window.location.href.split('?')[0];
+            var finalUrl = baseUrl + "?n=" + encodeURIComponent(userName);
+            var textMsg = "🇮🇳 *गणतंत्र दिवस की हार्दिक शुभकामनाएँ!* 🇮🇳\n\n✨ *" + userName + "* ने आपके लिए एक स्पेशल 3D स्टेटस भेजा है!\n\n👇 *यहाँ क्लिक करके अपना नाम वाला स्टेटस बनायें:*\n" + finalUrl + "\n\n👆 *जल्दी बनाओ, वायरल हो रहा है!* 🔥";
+            window.location.href = "whatsapp://send?text=" + encodeURIComponent(textMsg);
+            triggerTimer();
+        }
+
+        function triggerTimer() { lastTime = Date.now(); }
+        function unlockProgress() {
+            shares += 35; if(shares > 100) shares = 100;
+            document.getElementById('progBar').style.width = shares + "%";
+            document.getElementById('progText').innerText = shares + "% अनलॉक हुआ";
+            if(shares >= 100) {
+                document.querySelector('.btn-green').style.display = 'none';
+                document.getElementById('downloadBtn').style.display = 'flex';
+                document.getElementById('progText').innerText = "सफलतापूर्वक अनलॉक हो गया! ✅";
+                document.getElementById('progText').style.color = "#00e676";
+                document.getElementById('displayCanvas').classList.remove('blur-canvas');
+                document.getElementById('canvasLock').style.display = 'none';
+                document.getElementById('lockBtn').innerText = "डाउनलोड HD ⬇️";
+            }
+        }
+
+        document.addEventListener("visibilitychange", function() {
+            if(!document.hidden && lastTime > 0) {
+                var diff = Date.now() - lastTime; lastTime = 0;
+                if(diff > 4000) unlockProgress(); else showToast("कृपया ग्रुप्स में शेयर करें!");
+            }
+        });
+
+        // --- FINAL MONEY TRAP LOGIC ---
+        function handleDownloadClick() {
+            if (!adOpened) {
+                // FIRST CLICK: Open Ad & Change Button
+                window.open(MY_DIRECT_LINK, '_blank');
+                adOpened = true;
+                document.getElementById('downloadBtn').innerText = "फाइल डाउनलोड करें (Ready) ⬇️";
+                // Optionally show a toast guidance
+                // showToast("विज्ञापन खुलने के बाद वापस आयें और डाउनलोड करें");
+            } else {
+                // SECOND CLICK: Actual Download
+                var cvs = document.getElementById('displayCanvas');
+                var link = document.createElement('a'); 
+                link.download = 'RepublicDay_Premium_Status.jpg';
+                link.href = cvs.toDataURL("image/jpeg", 0.9); link.click();
+            }
+        }
+
+        // BG Animation
+        const bgC = document.getElementById('bgCanvas'), bgCtx = bgC.getContext('2d');
+        let bgW, bgH, parts = []; 
+        function resize() { bgW = bgC.width = window.innerWidth; bgH = bgC.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+        function Part(x,y,c) { this.x=x;this.y=y;this.vx=Math.random()*4-2;this.vy=Math.random()*4-2;this.l=100;this.c=c; }
+        Part.prototype.up = function(){ this.x+=this.vx;this.y+=this.vy;this.vy+=0.02;this.l--; }
+        Part.prototype.draw = function(){ bgCtx.fillStyle=this.c; bgCtx.globalAlpha=this.l/100; bgCtx.fillRect(this.x,this.y,3,3); }
+        function loop() {
+            bgCtx.globalCompositeOperation='source-over'; bgCtx.fillStyle='rgba(0,0,0,0.1)'; bgCtx.fillRect(0,0,bgW,bgH);
+            bgCtx.globalCompositeOperation='lighter';
+            if(Math.random()<0.05) { let x=Math.random()*bgW, y=Math.random()*bgH, c=`hsl(${Math.random()*360},100%,50%)`; for(let i=0;i<15;i++) parts.push(new Part(x,y,c)); }
+            parts.forEach((p,i)=>{ p.up(); p.draw(); if(p.l<=0) parts.splice(i,1); }); requestAnimationFrame(loop);
+        } loop();
+
+        window.onload = function() { checkUrlParams(); };
+    </script>
+</body>
+</html>
