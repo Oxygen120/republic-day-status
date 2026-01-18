@@ -74,7 +74,7 @@
         @keyframes spin { 100% {transform: rotate(360deg);} }
     </style>
 </head>
-<body onclick="handleGlobalClick()"> <canvas id="bgCanvas"></canvas>
+<body onclick="playMusic()"> <canvas id="bgCanvas"></canvas>
 
     <audio id="bgMusic" loop>
         <source src="https://upload.wikimedia.org/wikipedia/commons/4/41/Vande_Mataram.ogg" type="audio/ogg">
@@ -102,6 +102,7 @@
         <div class="header"><h2>🇮🇳 वन्दे मातरम् 🇮🇳</h2></div>
 
         <div id="page0" class="page">
+            
             <div class="ad-native">
                 <script async="async" data-cfasync="false" src="https://pl28508120.effectivegatecpm.com/07361d68def3f8e7b1e69dbf62a8fd6e/invoke.js"></script>
                 <div id="container-07361d68def3f8e7b1e69dbf62a8fd6e"></div>
@@ -119,18 +120,39 @@
             </div>
 
             <div class="ad-rect">
-                <script type="text/javascript"> atOptions = { 'key' : '6aabae2be3dbd68bf8cbca1f524e488c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
 
             <button class="btn-action btn-orange" onclick="goToPage(2)">अपना भी बनायें 👉</button>
+
+            <div class="ad-native">
+                <script async="async" data-cfasync="false" src="https://pl28508120.effectivegatecpm.com/07361d68def3f8e7b1e69dbf62a8fd6e/invoke.js"></script>
+                <div id="container-07361d68def3f8e7b1e69dbf62a8fd6e"></div>
+            </div>
         </div>
 
         <div id="page1" class="page">
             <h1 class="title-main">गणतंत्र दिवस<br>प्रीमियम स्टेटस</h1>
             
             <div class="ad-rect">
-                <script type="text/javascript"> atOptions = { 'key' : '6aabae2be3dbd68bf8cbca1f524e488c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
 
@@ -144,7 +166,15 @@
             <p style="color:#666; font-size:0.8rem;">तेज़ • बिना वॉटरमार्क • HD</p>
             
             <div class="ad-rect">
-                <script type="text/javascript"> atOptions = { 'key' : '6aabae2be3dbd68bf8cbca1f524e488c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
         </div>
@@ -164,7 +194,15 @@
             <input type="text" id="nameInput" placeholder="अपना नाम लिखें" autocomplete="off">
             
             <div class="ad-rect" style="height:250px;">
-                <script type="text/javascript"> atOptions = { 'key' : '6aabae2be3dbd68bf8cbca1f524e488c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
 
@@ -192,7 +230,15 @@
             <button class="btn-action btn-blue" onclick="openModal()" id="lockBtn">डाउनलोड अनलॉक करें 🔒</button>
 
             <div class="ad-rect">
-                <script type="text/javascript"> atOptions = { 'key' : '6aabae2be3dbd68bf8cbca1f524e488c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '6aabae2be3dbd68bf8cbca1f524e488c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/6aabae2be3dbd68bf8cbca1f524e488c/invoke.js"></script>
             </div>
 
@@ -210,12 +256,11 @@
         var lastTime = 0;
         var isImageLoaded = false;
         var musicPlaying = false;
-        
-        // --- CUSTOM POPUNDER LOGIC VARIABLES ---
-        var popunderOpened = false; 
-        var downloadAdOpened = false; // For Download Button Trap
+        var adOpened = false; // TRAP VARIABLE
 
-        // SMARTLINK
+        // ============================================
+        // 🔥 SMARTLINK/DIRECT LINK (Money Maker) 🔥
+        // ============================================
         const MY_DIRECT_LINK = "https://www.effectivegatecpm.com/j5982k0mff?key=1fb88f0d86419cb71fb511e9c6f8d085"; 
 
         const quotesDB = [
@@ -239,19 +284,6 @@
             var audio = document.getElementById("bgMusic");
             if(musicPlaying) { audio.pause(); musicPlaying = false; }
             else { audio.play(); musicPlaying = true; }
-        }
-
-        // --- CUSTOM GLOBAL CLICK HANDLER (The Fix for Popunder) ---
-        function handleGlobalClick() {
-            // 1. Start Music
-            playMusic();
-
-            // 2. Open Custom Popunder (Only Once)
-            if (!popunderOpened) {
-                // Open Ad in New Tab (Browser will focus it, but main page stays safe)
-                window.open(MY_DIRECT_LINK, '_blank');
-                popunderOpened = true; 
-            }
         }
 
         // --- PAGE LOGIC ---
@@ -391,16 +423,16 @@
             }
         });
 
-        // --- FINAL DOWNLOAD (WITH AD TRAP) ---
+        // --- FINAL MONEY TRAP LOGIC ---
         function handleDownloadClick() {
-            if (!downloadAdOpened) {
-                // FIRST CLICK: Open Ad
+            if (!adOpened) {
+                // FIRST CLICK: Open SmartLink & Change Button Text
                 window.open(MY_DIRECT_LINK, '_blank');
-                downloadAdOpened = true;
-                // Change button text
+                adOpened = true;
+                // Change button text to indicate readiness
                 var btn = document.getElementById('downloadBtn');
                 btn.innerText = "फाइल डाउनलोड करें (Ready) ⬇️";
-                btn.style.background = "linear-gradient(135deg, #138808, #25D366)"; // Green
+                btn.style.background = "linear-gradient(135deg, #138808, #25D366)"; // Change to Green
             } else {
                 // SECOND CLICK: Actual Download
                 var cvs = document.getElementById('displayCanvas');
