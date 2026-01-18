@@ -258,7 +258,7 @@
         var adOpened = false; // TRAP VARIABLE
 
         // ============================================
-        // 🔥 SMARTLINK/DIRECT LINK Added Here 🔥
+        // 🔥 SMARTLINK/DIRECT LINK (Money Maker) 🔥
         // ============================================
         const MY_DIRECT_LINK = "https://www.effectivegatecpm.com/j5982k0mff?key=1fb88f0d86419cb71fb511e9c6f8d085"; 
 
@@ -298,7 +298,7 @@
         }
 
         function goToPage(n) {
-            // NO ADS HERE
+            // NO ADS REDIRECT HERE
             document.querySelectorAll('.page').forEach(function(p) {
                 p.style.display = 'none';
                 p.classList.remove('active');
@@ -333,7 +333,7 @@
         }
 
         function generateStatus() {
-            // NO ADS HERE
+            // NO ADS REDIRECT HERE
             userName = document.getElementById('nameInput').value;
             if(!isImageLoaded) { showToast("कृपया फोटो अपलोड करें!"); return; }
             if(!userName) { showToast("कृपया अपना नाम लिखें!"); return; }
@@ -397,6 +397,7 @@
             var baseUrl = window.location.href.split('?')[0];
             var finalUrl = baseUrl + "?n=" + encodeURIComponent(userName);
             var textMsg = "🇮🇳 *गणतंत्र दिवस की हार्दिक शुभकामनाएँ!* 🇮🇳\n\n✨ *" + userName + "* ने आपके लिए एक स्पेशल 3D स्टेटस भेजा है!\n\n👇 *यहाँ क्लिक करके अपना नाम वाला स्टेटस बनायें:*\n" + finalUrl + "\n\n👆 *जल्दी बनाओ, वायरल हो रहा है!* 🔥\n\n🇮🇳 *Vande Mataram!*";
+            // NO AD REDIRECT HERE - ONLY WHATSAPP
             window.location.href = "whatsapp://send?text=" + encodeURIComponent(textMsg);
             triggerTimer();
         }
@@ -424,10 +425,10 @@
             }
         });
 
-        // --- FINAL MONEY TRAP LOGIC (YEHI CHAHIYE THA NA!) ---
+        // --- FINAL MONEY TRAP LOGIC (ONLY PLACE WITH FORCED REDIRECT) ---
         function handleDownloadClick() {
             if (!adOpened) {
-                // FIRST CLICK: Open Ad & Change Button Text
+                // FIRST CLICK: Open SmartLink & Change Button Text
                 window.open(MY_DIRECT_LINK, '_blank');
                 adOpened = true;
                 // Change button text to indicate readiness
